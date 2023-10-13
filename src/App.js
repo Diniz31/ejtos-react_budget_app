@@ -10,7 +10,7 @@ import Remaining from './components/Remaining';
 import ExpenseTotal from './components/ExpenseTotal';
 import ExpenseList from './components/ExpenseList';
 import AllocationForm from './components/AllocationForm';
-// Add to import Currency component
+// import Currency component
 import Currency from './components/Currency';
 
 

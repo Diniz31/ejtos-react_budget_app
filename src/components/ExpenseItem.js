@@ -5,11 +5,15 @@ import { AppContext } from '../context/AppContext';
 
 const ExpenseItem = (props) => {
     const { dispatch, currency } = useContext(AppContext);
-
-    const handleDeleteExpense = () => {
+  // decrease by 10 the cost
+    const decreaseAllocation = (name) => {
+        const expense = {
+            name: name,
+            cost: 10,
+        };
         dispatch({
-            type: 'DELETE_EXPENSE',
-            payload: props.id,
+            type: 'RED_EXPENSE',
+            payload: expense,
         });
     };
 
@@ -23,6 +27,13 @@ const ExpenseItem = (props) => {
             type: 'ADD_EXPENSE',
             payload: expense
         });
+    }
+    const deleteAllocation = (name) => {
+
+        dispatch({
+            type:'DELETE_EXPENSE',
+            payload: name
+        })
 
     }
 
@@ -31,7 +42,8 @@ const ExpenseItem = (props) => {
         <td>{props.name}</td>
         <td>{currency}{props.cost}</td>
         <td><FcPlus cursor ='pointer' size = '2em' onClick={event=> increaseAllocation(props.name)}></FcPlus></td>
-        <td><FcCancel cursor ='pointer' size='2em' onClick={handleDeleteExpense}></FcCancel></td>
+        <td><FcCancel cursor ='pointer' size='2em' onClick={event=> decreaseAllocation(props.name)}></FcCancel></td>
+        <td><FcCancel cursor ='pointer' size='2em' onClick={event=> deleteAllocation(props.name)}></FcCancel></td>
         </tr>
     );
 };
