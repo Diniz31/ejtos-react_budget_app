@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { FcCancel } from 'react-icons/fc';
 import { FcPlus } from "react-icons/fc";
+import { FcMinus } from "react-icons/fc";
 import { AppContext } from '../context/AppContext';
 
 const ExpenseItem = (props) => {
@@ -16,7 +17,7 @@ const ExpenseItem = (props) => {
             payload: expense,
         });
     };
-
+   // increase by 10 the cost
     const increaseAllocation = (name) => {
         const expense = {
             name: name,
@@ -28,6 +29,7 @@ const ExpenseItem = (props) => {
             payload: expense
         });
     }
+     // delete the cost
     const deleteAllocation = (name) => {
 
         dispatch({
@@ -42,7 +44,7 @@ const ExpenseItem = (props) => {
         <td>{props.name}</td>
         <td>{currency}{props.cost}</td>
         <td><FcPlus cursor ='pointer' size = '2em' onClick={event=> increaseAllocation(props.name)}></FcPlus></td>
-        <td><FcCancel cursor ='pointer' size='2em' onClick={event=> decreaseAllocation(props.name)}></FcCancel></td>
+        <td><FcMinus cursor ='pointer' size='2em' onClick={event=> decreaseAllocation(props.name)}></FcMinus></td>
         <td><FcCancel cursor ='pointer' size='2em' onClick={event=> deleteAllocation(props.name)}></FcCancel></td>
         </tr>
     );
